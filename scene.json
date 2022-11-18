@@ -30,11 +30,11 @@
   "spawnPoints": [
     {
       "name": "spawn1",
-      "default": true,
+      "default": true,       
       "position": {
-        "x": 67.98,
+        "x": 31.37,
         "y": 0.88,
-        "z": 23.95
+        "z": 38.22
       },
       "cameraTarget": {
         "x": 56.14,
