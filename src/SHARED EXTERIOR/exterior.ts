@@ -35,17 +35,17 @@ class ExteriorInstance extends Scene {
 
     constructor() {
         super(SceneLocations.Exterior)
-        this.addComponent(new GLTFShape('models/KPMG/exterior/KPMG_exterior_collider.glb'))
-        this.exteriorEntity.addComponent(new GLTFShape('models/KPMG/exterior/KPMG_exterior_Geo1B.glb'))
-        this.exteriorInnerEntity.addComponent(new GLTFShape('models/KPMG/exterior/KPMG_exterior_innerGeo.glb'))
+        //this.addComponent(new GLTFShape('models/KPMG/exterior/KPMG_exterior_collider.glb'))
+        //this.exteriorEntity.addComponent(new GLTFShape('models/KPMG/exterior/KPMG_exterior_Geo1B.glb'))
+        //this.exteriorInnerEntity.addComponent(new GLTFShape('models/KPMG/exterior/KPMG_exterior_innerGeo.glb'))
 
         this.kbExterior.addComponent(new GLTFShape("models/KB-HOMES/exterior/KBH-exterior.glb"))
 
-        this.exteriorEntity.setParent(this)
-        this.exteriorInnerEntity.setParent(this)
+        //this.exteriorEntity.setParent(this)
+       // this.exteriorInnerEntity.setParent(this)
         this.kbExterior.setParent(this)
 
-        this.triggerPortalKPMG()
+        //this.triggerPortalKPMG()
         this.triggerPortalKBHomes()
     }
 
