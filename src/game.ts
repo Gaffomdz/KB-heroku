@@ -17,11 +17,11 @@ class GameController {
 
     constructor() {
         SceneController.loadScene(SceneLocations.Exterior)
-        KPMGBank.preload()
-        KPMGEvent.preload()
-        KPMGRetail.preload()
-        KBInterior1860.preload()
+        // KPMGBank.preload()
+        // KPMGEvent.preload()
+        // KPMGRetail.preload()
         KBCulDeSac.preload()
+        KBInterior1860.preload()  
         KBInterior1989.preload()
         KPMGInterior.preload()
         KBInterior2345.preload()
