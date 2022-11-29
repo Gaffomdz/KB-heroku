@@ -1,5 +1,7 @@
 import { NPC, NPCDelay } from "@dcl/npc-scene-utils";
 import { Dash_Material, Dash_Tweaker, Dash_Wait } from "dcldash";
+import { passcall } from "src/utils/servercall";
+import { TriggerButton } from "src/utils/triggerButton";
 import { Scene } from "../../congif/core/scene"
 import { SceneController } from "../../congif/core/sceneController"
 import { SceneLocations } from "../../congif/enums"
@@ -24,10 +26,18 @@ class KPMGInteriorInstance extends Scene {
     private interiorDoor6 = new ExitPlane()
     private interiorDoor7 = new ExitPlane()
     private interiorDoor8 = new ExitPlane()
+    //labels
+
+    private label1 = new Entity()
+    private label2 = new Entity()
+    private label3 = new Entity()
+    private label4 = new Entity()
+
     //BankDoors
     private bankDoor = new ExitPlane()
     private eventSpaceDoor = new ExitPlane()
     private retailSpaceDoor = new ExitPlane()
+    private apicall = new TriggerButton()
     //npc
     private npc = new NPC({
         position: new Vector3(8.66, 0.28, 21.31),
@@ -65,6 +75,15 @@ class KPMGInteriorInstance extends Scene {
         this.interiorDoorFx.addComponent(new GLTFShape('models/KPMG/interior/KPMG_Interior_door_fx.glb'))
         this.interiorEventDoor.addComponent(new GLTFShape('models/KPMG/interior/KPMG_Interior_event_door.glb'))
         this.interiorRetailDoor.addComponent(new GLTFShape('models/KPMG/interior/KPMG_Interior_retail_door.glb'))
+        //     this.apicall.addComponentOrReplace(new Transform({
+        //         position: new Vector3(22.40,1.58,18.43),
+        //         scale: new Vector3(1, 1, 1)
+        //     }))
+        //     this.apicall.setMessage("Pass API")
+        //     this.apicall.addComponentOrReplace(new OnPointerDown(() => {
+
+        //         passcall()
+        // }))
 
 
         this.interior1Entity.setParent(this)
@@ -74,6 +93,7 @@ class KPMGInteriorInstance extends Scene {
         this.interiorEventDoor.setParent(this)
         this.interiorRetailDoor.setParent(this)
         this.npc.setParent(this)
+        // this.apicall.setParent(this)
 
         this.interiorDoorPortal1()
         this.interiorDoorPortal2()
@@ -86,6 +106,8 @@ class KPMGInteriorInstance extends Scene {
         this.bankDoorPortal()
         this.eventSpacePortal()
         this.retailSpacePortal()
+        this.labels()
+
     }
     preload() {
         engine.addEntity(this)
@@ -256,10 +278,11 @@ class KPMGInteriorInstance extends Scene {
         })
 
         this.bankDoor.addComponentOrReplace(new Transform({
-            position: new Vector3(14.630, 1.980, 2.620),
+            position: new Vector3(32.630, 1.980, 44.620),
             scale: new Vector3(4.000, 4.000, 5.000),
             rotation: new Quaternion().setEuler(360.000, 212.000, 1.000),
         }))
+
         this.bankDoor.onCameraEnter = () => this.enterBank(
             new Vector3(15.23, 2.30, 74.34),
             new Vector3(16.34, 2, 48.44),
@@ -316,6 +339,36 @@ class KPMGInteriorInstance extends Scene {
         SceneController.loadScene(SceneLocations.KPMGRetail)
         movePlayerToVector3(position, direction)
     }
+    labels() {
+        [this.label1, this.label2, this.label3, this.label4
+        ].forEach(label => {
+            label.setParent(this)
+            label.addComponent(new GLTFShape("models/KPMG/interior/ComingSoon_Sign.glb"))
+
+        })
+        this.label1.addComponent(new Transform({
+            position: new Vector3(15.080, 2.300, 46.020),
+            scale: new Vector3(1.400, 1.400, 1.400),
+            rotation: new Quaternion().setEuler(360.000, 248.000, 360.000),
+        }))
+        this.label2.addComponent(new Transform({
+            position: new Vector3(2.080, 2.300, 15.100),
+            scale: new Vector3(1.400, 1.400, 1.400),
+            rotation: new Quaternion().setEuler(360.000, 158.000, 360.000),
+        }))
+        this.label3.addComponent(new Transform({
+            position: new Vector3(14.810, 2.300, 2.320),
+            scale: new Vector3(1.400, 1.400, 1.400),
+            rotation: new Quaternion().setEuler(360.000, 113.000, 360.000),
+        }))
+        this.label4.addComponent(new Transform({
+            position: new Vector3(15.080, 2.300, 46.020),
+            scale: new Vector3(1.400, 1.400, 1.400),
+            rotation: new Quaternion().setEuler(360.000, 248.000, 360.000),
+        }))
+
+    }
+
 
 }
 

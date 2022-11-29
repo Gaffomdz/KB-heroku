@@ -5,6 +5,7 @@ import { SceneLocations } from "src/congif/enums"
 import { ExitPlane } from "src/utils/exitPlane"
 import { movePlayerToVector3 } from "src/utils/movePlayerToVector3"
 import { TriggerButton } from "src/utils/triggerButton"
+import { myNPC } from "../kb-npc"
 
 
 class KBCulDeSacInstance extends Scene {
@@ -27,6 +28,8 @@ class KBCulDeSacInstance extends Scene {
     private triggerCraftsmanButton1989 = new TriggerButton()
     private triggerGeneralButton1989 = new TriggerButton()
 
+    private triggerDoor2345 = new ExitPlane()
+
     constructor() {
         super(SceneLocations.KBCulDeSac)
         this.addComponent(new GLTFShape("models/KB-HOMES/Cul-de-Sac/KBH_Cul-de-sac_collider.glb"))
@@ -44,7 +47,9 @@ class KBCulDeSacInstance extends Scene {
 
         this.triggerDoors1860()
         this.triggerDoors1989()
+        this.triggerDoors2345()
         this.createTriggerButtons()
+        this.createNPC()
     }
     preload() {
         engine.addEntity(this)
@@ -59,6 +64,10 @@ class KBCulDeSacInstance extends Scene {
                 scale: new Vector3(1, 1, 1)
             }))
         }, 5)
+    }
+    createNPC() {
+        engine.addEntity(myNPC)
+        myNPC.setParent(this)
     }
     triggerDoors1860() {
         [this.triggerDoor1860].forEach(ExitPlane => {
@@ -99,6 +108,27 @@ class KBCulDeSacInstance extends Scene {
     }
     enter1989(position: Vector3, direction: Vector3) {
         SceneController.loadScene(SceneLocations.KBInterior1989)
+        movePlayerToVector3(position, direction)
+    }
+    triggerDoors2345() {
+        [this.triggerDoor2345].forEach(ExitPlane => {
+            ExitPlane.setParent(this)
+            ExitPlane.addComponent(Dash_Material.transparent())
+        })
+
+        this.triggerDoor2345.addComponentOrReplace(new Transform({
+            position: new Vector3(32.140, 1.180, 15.270),
+            scale: new Vector3(2.600, 1.700, 1.000),
+            rotation: new Quaternion().setEuler(1.000, 356.000, 272.000),
+        }))
+        this.triggerDoor2345.onCameraEnter = () => this.enter2345(
+            new Vector3(32.74,1.18,38.03),
+            new Vector3(32.44,1.18,34.47),
+        )
+        
+    }
+    enter2345(position: Vector3, direction: Vector3) {
+        SceneController.loadScene(SceneLocations.KBInterior2345)
         movePlayerToVector3(position, direction)
     }
     createTriggerButtons() {
@@ -155,7 +185,7 @@ class KBCulDeSacInstance extends Scene {
         this.triggerElevation1860Button3.onClick = () => this.option31860()
         this.triggerElevation1860Button3.setMessage("Option 3")
 
-        Dash_Tweaker(this.triggerElevation1860Button3)
+
 
     }
     spanish1989() {
