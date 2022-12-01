@@ -23,7 +23,7 @@ class KBInterior2345Instance extends Scene {
         this.mainGeo2.addComponent(new GLTFShape("models/KB-HOMES/interior-2345/KBH_Interior_model2345_2_MainGeo.glb"))
         this.collider2.addComponent(new GLTFShape("models/KB-HOMES/interior-2345/KBH_Interior_model2345_2_collider.glb"))
         this.furniture.addComponent(new GLTFShape("models/KB-HOMES/interior-2345/KBH_Interior_model2345_1_furniture.glb"))
-        this.furniture2.addComponent(new GLTFShape("models/KB-HOMES/interior-2345/KBH_Interior_model2345_1_furniture.glb"))
+        this.furniture2.addComponent(new GLTFShape("models/KB-HOMES/interior-2345/KBH_Interior_model2345_2_furniture.glb"))
         this.yard.addComponent(new GLTFShape("models/KB-HOMES/interior-2345/KBH_Interior_model2345_yard.glb"))
 
         this.mainGeo.setParent(this)
@@ -63,7 +63,7 @@ class KBInterior2345Instance extends Scene {
             new Vector3(31.94,0.93,20.66),
             new Vector3(31.73,0.88,26.06),
         )
-        Dash_Tweaker(this.kbInterior2345ExitDoor)
+        
     }
     exitToCulDeSac(position: Vector3, direction: Vector3) {
         SceneController.loadScene(SceneLocations.KBCulDeSac)
