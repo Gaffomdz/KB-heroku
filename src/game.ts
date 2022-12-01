@@ -16,13 +16,13 @@ class GameController {
     private scenes = SceneEntities
 
     constructor() {
-        SceneController.loadScene(SceneLocations.Exterior)
-        KPMGBank.preload()
-        KPMGEvent.preload()
-        KPMGRetail.preload()
-        KPMGInterior.preload()
+        SceneController.loadScene(SceneLocations.KBCulDeSac)
+        // KPMGBank.preload()
+        // KPMGEvent.preload()
+        // KPMGRetail.preload()
+        // KPMGInterior.preload()
         KBInterior1860.preload()
-        KBCulDeSac.preload()
+        // KBCulDeSac.preload()
         KBInterior1989.preload()
         KBInterior2345.preload()
     }

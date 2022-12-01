@@ -45,7 +45,7 @@ class ExteriorInstance extends Scene {
         this.exteriorInnerEntity.setParent(this)
         this.kbExterior.setParent(this)
 
-        this.triggerPortalKPMG()
+        // this.triggerPortalKPMG()
         this.triggerPortalKBHomes()
     }
 
